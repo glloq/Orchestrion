@@ -27,7 +27,7 @@ Le contrôle peut être effectué via une interface Web MIDI et envoyé via USB.
 
 # Code instruments accessible
 
- - utilisation de marteaux sur une courte durée avec les messages noteOn qui arrive par usb. il fautque tout les notes midi ce suivent l'intervalle des notes de chaque intrument ( ex : xylophone, vibraphone, glockenspiel,carillon, cloches etc ... ) => 
+ - utilisation de marteaux sur une courte durée avec les messages noteOn qui arrive par usb. il fautque tout les notes midi ce suivent l'intervalle des notes de chaque intrument ( ex : xylophone, vibraphone, glockenspiel,carillon, cloches etc ... ) => [lien du code et du materiel avec un exemple](https://github.com/glloq/Orchestrion_HitNoteOn-PWM-mute-volume)
 
 
 # Contributions
