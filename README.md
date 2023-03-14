@@ -7,9 +7,9 @@ L'orchestre électronique sera capable de reproduire la sonorité d'un orchestre
 Ce dépôt GitHub regroupe les explications générales du projet, y compris l'interface Raspberry Pi, l'actionneur MIDI Arduino, les choix de matériaux et différents électroaimants, servomoteurs, électronique de puissance, etc.
 
 Chaque type d'instrument aura un lien vers son propre dépôt pour l'instrument contenant les plans, fichiers et tutoriels spécifiques à chaque instrument.
-Composition de l'orchestre électronique
+## Composition de l'orchestre électronique
 
-## L'orchestre électronique est composé des types d'instruments suivants :
+### L'orchestre électronique est composé des types d'instruments suivants :
 
    - Instruments à cordes frottées : violon, alto, violoncelle, contrebasse.
    - Instruments à cordes pincées : harpe, guitare, mandoline, ukulele.
