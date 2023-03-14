@@ -1,72 +1,29 @@
-# Presentation 
+Orchestrion - Projet de création d'un orchestre électronique
 
-Un Orchestrion est un instrument de musique mécanique complexe qui reproduit la sonorité d'un orchestre complet. Il peut comporter une grande variété d'instruments et nous alons adapter cet ancient systeme afin de le rendre connecté et modulaire, c'est a dire permettre de brancher plusieurs instruments 
+Le projet Orchestrion consiste en la création d'un orchestre électronique composé d'une variété d'instruments acoustiques, reproduits électroniquement à l'aide de microcontrôleurs Arduino, de moteurs, d'électroaimants et de servomoteurs.
 
-## Voici les types d'instruments que l'on peut trouver dans un Orchestrion, classés par catégorie :
-chaque instruments listé ci dessous est voué a etre retiré/adapté/combiné avec un autre si necessaire.
+L'orchestre électronique sera capable de reproduire la sonorité d'un orchestre complet, y compris les instruments à cordes frottées et à cordes pincées, les instruments à vents, les instruments à percussion et à clavier. La construction des instruments se fera à l'aide de l'impression 3D et de planches de bois, et chaque instrument sera équipé d'électronique pour contrôler les mouvements des cordes, des membranes et des clapets nécessaires pour produire les sons.
 
-### Les instruments à cordes frotté :
-- Violons
-- Alto
-- Violoncelle
-- Contrebasse
-   
-### Les instruments à cordes pincé :
-- Harpe
-- Guitare acoustique 
-- Gutare basse
-- Mandoline
+L'électronique et le code conçus pour chaque instrument sont adaptables à d'autres instruments, qu'ils soient construits de zéro ou qu'ils soient des instruments complets préexistants. Les fichiers de code et de conception peuvent être modifiés pour répondre aux besoins spécifiques de chaque instrument.
 
-### Les instruments à vent :
-- Flûte
-- Piccolo
-- Clarinette
-- Hautbois
-- Cor anglais
-- Basson
-- Saxophone
-- Trompette
-- Cornet
-- Cor d'harmonie
-- Trombone
-- Tuba
-- Orgue
-- Accordéon
-- Harmonium
+Le projet Orchestrion vise à explorer les possibilités de la création d'instruments électroniques, à la fois sur le plan technique et artistique. Le projet est conçu pour les passionnés de musique, les étudiants en électronique et les amateurs de technologies de l'information et de la communication.
 
-### Les instruments à percussion :
+Ce dépôt GitHub contient tous les fichiers nécessaires pour construire chaque instrument, y compris les codes Arduino, les fichiers STL, les images et les tutoriels. Les utilisateurs sont encouragés à modifier et à améliorer les instruments selon leurs besoins et leurs préférences.
+Composition de l'orchestre électronique
 
-- Vibraphone
-- Marimba
-- Glockenspiel
-- Xylophone
-- Carillon
+L'orchestre électronique est composé des types d'instruments suivants :
 
-- Timbales
-- Cymbales
-- Gongs
-- Triangle
-- Tambourin
-- Castagnettes
+    Instruments à cordes frottées : violon, alto, violoncelle, contrebasse.
+    Instruments à cordes pincées : harpe, guitare, mandoline.
+    Instruments à vents : flûte, piccolo, clarinette, hautbois, cor anglais, basson, saxophone, trompette, cornet, cor d'harmonie, trombone, tuba, orgue, ## harmonica, accordéon.
+    Instruments à percussion : timbales, xylophone, marimba, vibraphone, glockenspiel, cymbales, gongs, triangle, tambourin, castagnettes, carillon.
+    Instruments à clavier : piano, orgue, accordéon, harmonium.
 
-- Piano
-   
- 
+Contrôle de l'orchestre électronique
 
-## Objectif de ce projet :
- Je cherche a utiliser des arduino / raspberry (ou autre version compatible)  pour jouer des fichiers midi sur differents instruments.
- l'idée est d'utiliser un serveur pour faire tourner WEBMIDI et d'envoyer les differents cannaux midi aux instrument selectionné par le biais de cables usb (peut etre meme wifi à l'avenir) 
- 
- #### Contraintes :
- - penser à la securité electrique dans la conception :
-   - Garder un faible voltage pour la securité (12 a 24V) 
-   - fusible/disjoncteur adapté au systeme
-   - diametres des cables adapté a la puissance
-   - temperature electronique ( arete l'instrument et alume lad led erreur par exemple) 
--Il faut utiliser des electroaimants de faible puissance
- 
- ## Etats du projet :
- je suis dans un stade en mix entre R&D et prototypage de quelques intruments que je vais ajouter en lien dans la liste ci dessus au fur et a mesure que j'avance.
- je vais presenter la version "parfaite" pour chaque instrument (gestion vélocité, pitch bend, volume, etc ...) mais je vais bien sur rester sur une version plus simplifié pour tester les differentes parties et garder un son correct avant tout !
-Pour chaque typed'instrument je vais presenter des schemas ou modelisations 3d des idées mecanique ou electromecanique
- 
+L'orchestre électronique peut être contrôlé à l'aide d'un ordinateur connecté à un microcontrôleur Arduino à l'aide de la bibliothèque MidiUSB.h. L'utilisateur peut sélectionner un fichier MIDI et assigner les différents canaux à chaque instrument. Le contrôle peut être effectué via une interface Web MIDI et envoyé via USB. Pour ce faire, un Raspberry Pi avec un shield peut être utilisé pour ajouter des ports USB supplémentaires.
+Installation et utilisation
+Les instructions d'installation et d'utilisation de chaque instrument sont disponibles dans les fichiers README de chaque dossier correspondant à l'instrument. Les utilisateurs sont encouragés à lire attentivement ces fichiers avant de commencer la construction de l'instrument.
+Contributions
+
+Les contributions au projet sont les bienvenues. Les utilisateurs sont encouragés à soumettre des suggestions, des améliorations et des ajouts de nouvelles fonctionnalités. Les contributions doivent être soumises sous la forme de pull requests.
