@@ -1,6 +1,6 @@
 # Orchestrion - Projet de création d'un orchestre électronique
 
-Le projet Orchestrion consiste en la création d'un orchestre électronique composé d'une variété d'instruments acoustiques, reproduits électroniquement à l'aide de microcontrôleurs Arduino, de moteurs, d'électroaimants et de servomoteurs.
+Le projet Orchestrion consiste en la création d'un orchestre électronique composé d'une variété d'instruments acoustiques, controlé électroniquement à l'aide de microcontrôleurs Arduino, de moteurs, d'électroaimants et de servomoteurs.
 
 L'orchestre électronique sera capable de reproduire la sonorité d'un orchestre complet, y compris les instruments à cordes frottées et à cordes pincées, les instruments à vents, les instruments à percussion et à clavier. La construction des instruments se fera à l'aide de l'impression 3D et de planches de bois, et chaque instrument sera équipé d'électronique pour contrôler les mouvements des cordes, des membranes et des clapets nécessaires pour produire les sons.
 
