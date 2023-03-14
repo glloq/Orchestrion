@@ -12,14 +12,23 @@ Composition de l'orchestre électronique
 ## L'orchestre électronique est composé des types d'instruments suivants :
 
    - Instruments à cordes frottées : violon, alto, violoncelle, contrebasse.
-   - Instruments à cordes pincées : harpe, guitare, mandoline.
+   - Instruments à cordes pincées : harpe, guitare, mandoline, ukulele.
    - Instruments à vents : flûte, piccolo, clarinette, hautbois, cor anglais, basson, saxophone, trompette, cornet, cor d'harmonie, trombone, tuba, orgue, harmonica, accordéon.
   -  Instruments à percussion : timbales, xylophone, marimba, vibraphone, glockenspiel, cymbales, gongs, triangle, tambourin, castagnettes, carillon.
   -  Instruments à clavier : piano, orgue, accordéon, harmonium.
 
+l'objectif est d'utiliser des instruments acoustique uniquement.
+
 ## Contrôle de l'orchestre électronique
 
-L'orchestre électronique peut être contrôlé à l'aide d'un ordinateur connecté à un microcontrôleur Arduino à l'aide de la bibliothèque MidiUSB.h. L'utilisateur peut sélectionner un fichier MIDI et assigner les différents canaux à chaque instrument. Le contrôle peut être effectué via une interface Web MIDI et envoyé via USB. Pour ce faire, un Raspberry Pi avec un shield peut être utilisé pour ajouter des ports USB supplémentaires.
+L'orchestre électronique peut être contrôlé à l'aide d'un ordinateur ou un raspberry depuis une page web.
+L'utilisateur peut sélectionner un fichier MIDI et assigner les différents canaux à chaque instrument. 
+Le contrôle peut être effectué via une interface Web MIDI et envoyé via USB. Pour ce faire, un Raspberry Pi avec un shield peut être utilisé pour ajouter des ports USB supplémentaires.
+
+# Code instruments accessible
+
+ - utilisation de marteaux sur une courte durée avec les messages noteOn qui arrive par usb. il fautque tout les notes midi ce suivent l'intervalle des notes de chaque intrument ( ex : xylophone, vibraphone, glockenspiel,carillon, cloches etc ... ) => 
+
 
 # Contributions
 
