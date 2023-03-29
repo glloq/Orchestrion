@@ -34,7 +34,7 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 - La gestion de la vélocité sera assurée par la modification de la puissance envoyée aux électroaimants avec un découpage de l'alimentation en utilisant un relais SSR.
 
 # Code instruments actuel
-- Xylophone, marimba, vibraphone = [Code adaptable de 17 a 32 notes avec gestion pwm + silencieux pour noteOff + volume/vibrato](https://github.com/glloq/Orchestrion-Xylophone)
+- Xylophone, glokenspiel, marimba, vibraphone = [Code adaptable de 17 a 32 notes avec gestion pwm + silencieux pour noteOff + volume/vibrato](https://github.com/glloq/Orchestrion-Xylophone)
 
 # Contributions
 
