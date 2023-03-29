@@ -12,7 +12,7 @@ Chaque type d'instrument aura un lien vers son propre dépôt pour l'instrument 
    - Instruments à cordes frottées : violon, alto, violoncelle, contrebasse.
    - Instruments à cordes pincées : harpe, guitare, mandoline, ukulele.
    - Instruments à vents : flûte, piccolo, clarinette, hautbois, cor anglais, basson, saxophone, trompette, cornet, cor d'harmonie, trombone, tuba, orgue, harmonica, accordéon.
-  -  Instruments à percussion : timbales, xylophone, marimba, vibraphone, glockenspiel, cymbales, gongs, triangle, tambourin, castagnettes, carillon.
+  -  Instruments à percussion : timbales, xylophone, marimba, vibraphone, marimba, cymbales, gongs, triangle, tambourin, castagnettes, carillon.
   -  Instruments à clavier : piano, orgue, accordéon, harmonium.
 
 l'objectif est d'utiliser des instruments acoustique uniquement.
@@ -33,9 +33,8 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 - Pour les servomoteurs, nous utiliserons des modèles adaptés à la partie puissance choisie et qui sont silencieux.
 - La gestion de la vélocité sera assurée par la modification de la puissance envoyée aux électroaimants avec un découpage de l'alimentation en utilisant un relais SSR.
 
-# Code instruments 
- viser une construction objet et modulaire pour facilement adapter a chaque configuration 
-
+# Code instruments actuel
+-Xylophone, marimba, vibraphone = [Code adaptable de 17 a 32 notes avec gestion pwm + silencieux pour noteOff + volume/vibrato](https://github.com/glloq/Orchestrion-Xylophone)
 
 # Contributions
 
