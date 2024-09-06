@@ -22,4 +22,67 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 - [piano ](https://github.com/glloq/Orchestrion_Piano)
 - 
 
+# identification de l'instrument
 
+Pour permettre une identification automatique de l'instrument nous pouvons utiliser le message SysEx de Requête d'Identification.
+  
+L'appareil répond avec un message SysEx qui contient des informations telles que :
+- Manufacturer ID : Identifiant du fabricant de l'appareil.
+- Device ID : Identifiant unique pour cet appareil particulier.
+- Version du Firmware : Informations sur la version du firmware.
+- Nom ou Modèle de l'Appareil : Optionnellement, le nom ou le modèle de l'appareil peut être inclus.
+  
+
+## Exemple reponse de SysEx
+``` 
+F0 7E 00 06 02 43 01 F7
+```
+- F0 : Début du message SysEx.
+- 7E : Type de message universel non temps réel.
+- 00 : ID de l'appareil 
+- 06 : Sous-ID #1 : Commande pour l'identification.
+- 02 : Sous-ID #2 : Réponse d'identification.
+- 7D : Manufacturer ID : 7D est réservée pour des projets non commerciaux, expérimentaux ou développement open-source.
+- 01 : Indicateur minimal pour l'identification du modèle ou du firmware.
+- F7 : Fin du message SysEx.
+
+Pour permettre au controleur midi de connaitre quel instrument est branché nous utiliserons donc le parametre ID de l'appareil.  
+il n'y a pas de norme concernant l'ID de l'appareil, nous utiliserons donc une numerotation de 0 a 127 ( en decimal ) pour indiquer quel instrument est branché.
+  
+
+Voici un exemple d'ID que nous pouvons utiliser 
+
+| **Device ID (hex)** | **Instrument ** |
+|---------------------|-----------------|
+| 00                  | Piano                     |
+| 01                  | Guitare                   |
+| 02                  | Basse                     |
+| 03                  | Ukulélé                   |
+| 04                  | Trompette                 |
+| 05                  | Saxophone                 |
+| 06                  | Violon                    |
+| 07                  | Clarinette                |
+| 08                  | Flûte                     |
+| 09                  | Batterie                  |
+| 0A                  | Accordéon                 |
+| 0B                  | Harmonica                 |
+| 0C                  | Tambourin                 |
+| 0D                  | Orgue                     |
+| 0E                  | Xylophone                 |
+| 0F                  | Vibraphone                |
+| 10                  | Mandoline                 |
+| 11                  | Harpe                     |
+| 12                  | Glockenspiel              |
+| 13                  | Congas                    |
+| 14                  | Tuba                      |
+| 15                  | Cor                       |
+| 16                  | Banjo                     |
+| 17                  | Basson                    |
+| 18                  | Oboe                      |
+| 19                  | Violoncelle               |
+| 1A                  | Marimba                   |
+| 1B                  | Trombone                  |
+
+
+
+  
