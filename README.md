@@ -18,11 +18,18 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 
 - Xylophone, glokenspiel, marimba, vibraphone = [Code adaptable de 17 a 32 notes avec gestion pwm + silencieux pour noteOff + volume/vibrato](https://github.com/glloq/Orchestrion-Xylophone)
 - [lyre 16 cordes](https://github.com/glloq/16-cords-lyre-midi)
-- [ukulele](https://github.com/glloq/Orchestrion_ukulele)
-- [piano ](https://github.com/glloq/Orchestrion_Piano)
-- 
+- [ukulele solenoides](https://github.com/glloq/Orchestrion_ukulele)
+- [ukulele moteurs PAP](https://github.com/glloq/ukulele_stepper_motor)
+- [piano](https://github.com/glloq/Orchestrion_Piano)
+- Percussions => en cours 
+- Trompette => a faire
+- Clarinette=> en cours 
+- Flutes a bec => en cours 
+- basse => je doit adapter le code du ukulele solenoides
+- guitare => je doit adapter le code du ukulele solenoides
 
-# identification de l'instrument
+
+## identification de l'instrument
 
 Pour permettre une identification automatique de l'instrument nous pouvons utiliser le message SysEx de Requête d'Identification.
   
@@ -32,7 +39,7 @@ L'appareil répond avec un message SysEx qui contient des informations telles qu
 - Version du Firmware : Informations sur la version du firmware.
 - Nom ou Modèle de l'Appareil : Optionnellement, le nom ou le modèle de l'appareil peut être inclus.
 
-## demande d'identifiaction
+### demande d'identification
 ``` 
   F0 7E 7F 06 01 F7
 ```
@@ -43,7 +50,7 @@ L'appareil répond avec un message SysEx qui contient des informations telles qu
 - 01 : Requête d'identification.
 - F7 : Fin du message SysEx.
 
-## Exemple reponse de SysEx
+### Exemple reponse de SysEx
 ``` 
 F0 7E 00 06 02 43 01 F7
 ```
@@ -59,8 +66,10 @@ F0 7E 00 06 02 43 01 F7
 Pour permettre au controleur midi de connaitre quel instrument est branché nous utiliserons donc le parametre ID de l'appareil.  
 il n'y a pas de norme concernant l'ID de l'appareil, nous utiliserons donc une numerotation de 0 a 127 ( en decimal ) pour indiquer quel instrument est branché.
   
+#### Association instrument / Device ID 
 
 Voici un exemple d'ID que nous pouvons utiliser => il faudra surement doubler ou tripler certain instruments !
+  
 | **Device ID (hex)** | **Instrument ** |
 |---------------------|-----------------|
 | 00                  | Piano                     |
