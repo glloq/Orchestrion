@@ -50,8 +50,7 @@ Pour permettre au controleur midi de connaitre quel instrument est branché nous
 il n'y a pas de norme concernant l'ID de l'appareil, nous utiliserons donc une numerotation de 0 a 127 ( en decimal ) pour indiquer quel instrument est branché.
   
 
-Voici un exemple d'ID que nous pouvons utiliser 
-
+Voici un exemple d'ID que nous pouvons utiliser => il faudra surement doubler ou tripler certain instruments !
 | **Device ID (hex)** | **Instrument ** |
 |---------------------|-----------------|
 | 00                  | Piano                     |
