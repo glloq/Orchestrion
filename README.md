@@ -31,7 +31,17 @@ L'appareil répond avec un message SysEx qui contient des informations telles qu
 - Device ID : Identifiant unique pour cet appareil particulier.
 - Version du Firmware : Informations sur la version du firmware.
 - Nom ou Modèle de l'Appareil : Optionnellement, le nom ou le modèle de l'appareil peut être inclus.
-  
+
+## demande d'identifiaction
+``` 
+  F0 7E 7F 06 01 F7
+```
+- F0 : Début du message SysEx.
+- 7E : Type de message universel non temps réel.
+- 7F : Device ID, 7F est une valeur spéciale qui signifie "tous les appareils".
+- 06 : Commande d'identification.
+- 01 : Requête d'identification.
+- F7 : Fin du message SysEx.
 
 ## Exemple reponse de SysEx
 ``` 
