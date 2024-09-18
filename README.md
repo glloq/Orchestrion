@@ -22,23 +22,23 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 - [ukulele moteurs PAP](https://github.com/glloq/ukulele_stepper_motor)
 - [piano](https://github.com/glloq/Orchestrion_Piano)
 - [percussion](https://github.com/glloq/MidiPercussion)
-- [Trompette ](https://github.com/glloq/Orchestrion_trumpet) 
+- [Trompette](https://github.com/glloq/Orchestrion_trumpet) 
 - [flute a bec](https://github.com/glloq/servo-flute)
-- basse => je doit adapter le code du ukulele solenoides
-- guitare => je doit adapter le code du ukulele solenoides
 - [Harmonica](https://github.com/glloq/harmonica_Midi)
 - [violon](https://github.com/glloq/violano-virtuoso)
-- 
+- basse => je doit adapter le code du ukulele solenoides
+- guitare => je doit adapter le code du ukulele solenoides
+- banjo => a faire 
 
 ## Code generique
 
-- code adaptable grattage ou action avec servomoteurs :[servo midi](https://github.com/glloq/servo-midi-music)
+- code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement on, retour off) 1 a 88 notes :[servo midi](https://github.com/glloq/servo-midi-music)
 
 
 ## identification de l'instrument
 
-Pour permettre une identification automatique de l'instrument nous pouvons utiliser le message SysEx de Requête d'Identification.
-  
+On va chercher a utiliser un message SysEx de Requête d'Identification pour informer le controleur du type d'instrument connecté et le temps de delais pour action.
+
 L'appareil répond avec un message SysEx qui contient des informations telles que :
 - Manufacturer ID : Identifiant du fabricant de l'appareil.
 - Device ID : Identifiant unique pour cet appareil particulier.
