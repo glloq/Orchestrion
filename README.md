@@ -21,10 +21,9 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 - [ukulele solenoides](https://github.com/glloq/Orchestrion_ukulele)
 - [ukulele moteurs PAP](https://github.com/glloq/ukulele_stepper_motor)
 - [piano](https://github.com/glloq/Orchestrion_Piano)
-- Percussions => en cours 
-- Trompette => a faire
-- Clarinette=> en cours 
-- Flutes a bec => en cours 
+- [percussion](https://github.com/glloq/MidiPercussion)
+- [Trompette ](https://github.com/glloq/Orchestrion_trumpet) 
+- [flute a bec](https://github.com/glloq/servo-flute)
 - basse => je doit adapter le code du ukulele solenoides
 - guitare => je doit adapter le code du ukulele solenoides
 
