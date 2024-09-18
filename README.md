@@ -76,36 +76,21 @@ il n'y a pas de norme concernant l'ID de l'appareil, nous utiliserons donc une n
 
 Voici un exemple d'ID que nous pouvons utiliser => il faudra surement doubler ou tripler certain instruments !
   
-| **Device ID (hex)** | **Instrument ** |
-|---------------------|-----------------|
-| 00                  | Piano                     |
-| 01                  | Guitare                   |
-| 02                  | Basse                     |
-| 03                  | Ukulélé                   |
-| 04                  | Trompette                 |
-| 05                  | Saxophone                 |
-| 06                  | Violon                    |
-| 07                  | Clarinette                |
-| 08                  | Flûte                     |
-| 09                  | Batterie                  |
-| 0A                  | Accordéon                 |
-| 0B                  | Harmonica                 |
-| 0C                  | Tambourin                 |
-| 0D                  | Orgue                     |
-| 0E                  | Xylophone                 |
-| 0F                  | Vibraphone                |
-| 10                  | Mandoline                 |
-| 11                  | Harpe                     |
-| 12                  | Glockenspiel              |
-| 13                  | Congas                    |
-| 14                  | Tuba                      |
-| 15                  | Cor                       |
-| 16                  | Banjo                     |
-| 17                  | Basson                    |
-| 18                  | Oboe                      |
-| 19                  | Violoncelle               |
-| 1A                  | Marimba                   |
-| 1B                  | Trombone                  |
+| **Device ID (hex)** | **Instrument ** | **Device ID (hex)** | **Instrument ** |
+|---------------------|-----------------|---------------------|-----------------|
+| 00                  | Piano           | 0D                  |                 |
+| 01                  | Guitare         | 0E                  | Xylophone       |
+| 02                  | Basse           | 0F                  | Vibraphone      |
+| 03                  | Ukulélé         | 10                  | Mandoline       |
+| 04                  | Trompette       | 11                  | Harpe           |
+| 05                  | Saxophone       | 12                  | Glockenspiel    |
+| 06                  | Violon          | 13                  | Congas          |
+| 07                  | Clarinette      | 14                  | Tuba            |
+| 08                  | Flûte           | 15                  | Cor             |
+| 09                  | percussions     | 16                  | Banjo           |
+| 0A                  | Accordéon       | 17                  | Basson          |
+| 0B                  | Harmonica       | 18                  | Oboe            |
+| 0C                  | Tambourin       | 19                  | Violoncelle     |
 
 
 
