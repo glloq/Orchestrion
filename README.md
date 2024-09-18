@@ -26,6 +26,13 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 - [flute a bec](https://github.com/glloq/servo-flute)
 - basse => je doit adapter le code du ukulele solenoides
 - guitare => je doit adapter le code du ukulele solenoides
+- [Harmonica](https://github.com/glloq/harmonica_Midi)
+- [violon](https://github.com/glloq/violano-virtuoso)
+- 
+
+## Code generique
+
+- code adaptable grattage ou action avec servomoteurs :[servo midi](https://github.com/glloq/servo-midi-music)
 
 
 ## identification de l'instrument
@@ -51,7 +58,7 @@ L'appareil répond avec un message SysEx qui contient des informations telles qu
 
 ### Exemple reponse de SysEx
 ``` 
-F0 7E 00 06 02 43 01 F7
+F0 7E 00 06 02 7D 01 F7
 ```
 - F0 : Début du message SysEx.
 - 7E : Type de message universel non temps réel.
