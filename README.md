@@ -34,6 +34,8 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 
 - code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement on, retour off) 1 a 88 notes :[servo midi](https://github.com/glloq/servo-midi-music)
 
+- tests et experimentations sur un intrument a une corde de type corde frottée => [lien]([https://https://github.com/glloq/OneStringCello)
+- test et experimentations sur un interument a une corde gratté => 
 
 ## identification de l'instrument
 
@@ -44,6 +46,9 @@ L'appareil répond avec un message SysEx qui contient des informations telles qu
 - Device ID : Identifiant unique pour cet appareil particulier.
 - Version du Firmware : Informations sur la version du firmware.
 - Nom ou Modèle de l'Appareil : Optionnellement, le nom ou le modèle de l'appareil peut être inclus.
+  
+nous ajouterons pour notre besoin une information sur le delais d'action de l'instrument
+
 
 ### demande d'identification
 ``` 
