@@ -34,12 +34,49 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 
 - code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement on, retour off) 1 a 88 notes :[servo midi](https://github.com/glloq/servo-midi-music)
 
-- tests et experimentations sur un intrument a une corde de type corde frottée => [lien]([https://https://github.com/glloq/OneStringCello)
-- test et experimentations sur un interument a une corde gratté => 
+- tests et experimentations sur un intrument a une corde de type corde frottée => [lien](https://https://github.com/glloq/OneStringCello)
+- test et experimentations sur un interument a une corde gratté => [lien](https://github.com/glloq/OneStringGuitar)
+
+-------------------------------------------------------
+
+# Partie Controleur host et interfaces 
+
+l'objectif est d'avoir un systeme qui joue les fichiers midi le plus simplement possible sur les instruments connecté.  
+idealement je souhaite faire fonctionner le systeme depuis un raspberry pi avec une interface tactile.
+il faudrait utiliser un hub usb avec une alimentation isolé pour permettre de connecter plusieurs instruments 
+
+
+
+il faut permettre plusieurs actions sur l'interface de controle :
+
+- gestion des fichiers midi
+  - uploader un fichier midi
+  - selectionner un fichier midi
+  - supprimer le fichier selectionné
+  - creer un dossier
+  - deplacer le fichier selectionné dans un dossier
+    
+- gestion de la lecture du fichier midi 
+  - afficher les instruments utilisé dans le fichier midi
+  - fait l'assiciation automatique des intruments utilisé dans le fichier midi et les instruments connecté
+  - permettre de selectionner un autre type d'instrument connecté comme sortie pour le chanel du fichier midi (et enregistrer le choix pour ce fichier ?)
+  - envoi les messages midi a chaque instrument selectionné avec les delais adapté de chaque instrument
+
+- reconnaitre et lister les instruments connecté
+  - recuperer le type d'instrument
+  - recuperer le delais pour activation
+  - les informations sur les notes jouables (premiere note midi, nombre de note jouable, type de gamme utilisé, nombre de corde etc..)
+
 
 ## identification de l'instrument
 
-On va chercher a utiliser un message SysEx de Requête d'Identification pour informer le controleur du type d'instrument connecté et le temps de delais pour action.
+On va chercher a utiliser un message SysEx de Requête d'Identification pour informer le controleur du type d'instrument connecté se ses carracteristiques.
+- le type d'appareil
+- le delais pour action
+- la premiere note midi jouable 
+- le nombre de note jouable
+- le type d'octave (chromatique ou diatonique)
+  
 
 L'appareil répond avec un message SysEx qui contient des informations telles que :
 - Manufacturer ID : Identifiant du fabricant de l'appareil.
@@ -49,53 +86,50 @@ L'appareil répond avec un message SysEx qui contient des informations telles qu
   
 nous ajouterons pour notre besoin une information sur le delais d'action de l'instrument
 
-
-### demande d'identification
+#### Exemple reponse de SysEx
 ``` 
-  F0 7E 7F 06 01 F7
+F0 7E <Device ID> 06 02 <Manufacturer ID> <Family Code> <Family Number> <Software Revision> F7
 ```
-- F0 : Début du message SysEx.
-- 7E : Type de message universel non temps réel.
-- 7F : Device ID, 7F est une valeur spéciale qui signifie "tous les appareils".
-- 06 : Commande d'identification.
-- 01 : Requête d'identification.
+- F0 : Début d'un message SysEx.
+- 7E : Universel non réel-temps.
+- <Device ID> : Identifiant de l'appareil (retourne l'ID).
+- 06 : Sous-ID #1 (indique "Device Inquiry").
+- 02 : Sous-ID #2 (indique "Reply").
+- <Manufacturer ID> : Identifiant du fabricant (ex. 41 pour Roland, 7D pour les projet open source, etc.).
+- <Family Code> : Code de la famille de produits (deux octets).
+- <Family Number> : Numéro de modèle ou série (deux octets).
+- <Software Revision> : Version du firmware ou du logiciel (quatre octets).
 - F7 : Fin du message SysEx.
 
-### Exemple reponse de SysEx
-``` 
-F0 7E 00 06 02 7D 01 F7
-```
-- F0 : Début du message SysEx.
-- 7E : Type de message universel non temps réel.
-- 00 : ID de l'appareil 
-- 06 : Sous-ID #1 : Commande pour l'identification.
-- 02 : Sous-ID #2 : Réponse d'identification.
-- 7D : Manufacturer ID : 7D est réservée pour des projets non commerciaux, expérimentaux ou développement open-source.
-- 01 : Indicateur minimal pour l'identification du modèle ou du firmware.
-- F7 : Fin du message SysEx.
+on utilisera l'octets de <Device ID> avec les codes general midi 1 pour les Program Change Instrument Mapping pour identifier l'instrument
+on utilisera les 2 octets de <Family Number> pour informer sur le temps de delais moyen pour jouer une note
+on utilisera les 4 octets de <Software Revision> separément pour informer le controleur sur : la premiere note midi, le nombre de notes jouable, le type de gamme utilisé.
+on a encore les 2 octets de <Family Code> pour d'autre infos si necessaire
 
-Pour permettre au controleur midi de connaitre quel instrument est branché nous utiliserons donc le parametre ID de l'appareil.  
-il n'y a pas de norme concernant l'ID de l'appareil, nous utiliserons donc une numerotation de 0 a 127 ( en decimal ) pour indiquer quel instrument est branché.
-  
 #### Association instrument / Device ID 
+General MIDI 1 - Program Change Instrument Mapping
 
-Voici un exemple d'ID que nous pouvons utiliser => il faudra surement doubler ou tripler certain instruments !
-  
-| **Device ID (hex)** | **Instrument ** | **Device ID (hex)** | **Instrument ** |
-|---------------------|-----------------|---------------------|-----------------|
-| 00                  | Piano           | 0D                  |                 |
-| 01                  | Guitare         | 0E                  | Xylophone       |
-| 02                  | Basse           | 0F                  | Vibraphone      |
-| 03                  | Ukulélé         | 10                  | Mandoline       |
-| 04                  | Trompette       | 11                  | Harpe           |
-| 05                  | Saxophone       | 12                  | Glockenspiel    |
-| 06                  | Violon          | 13                  | Congas          |
-| 07                  | Clarinette      | 14                  | Tuba            |
-| 08                  | Flûte           | 15                  | Cor             |
-| 09                  | percussions     | 16                  | Banjo           |
-| 0A                  | Accordéon       | 17                  | Basson          |
-| 0B                  | Harmonica       | 18                  | Oboe            |
-| 0C                  | Tambourin       | 19                  | Violoncelle     |
+| Famille                 | Numéro du Programme | Instrument                      |
+|-------------------------|---------------------|----------------------------------|
+| Piano                   | 1 - 8               | Acoustic Grand Piano - Clavinet  |
+| Chromatic Percussion     | 9 - 16              | Celesta - Glockenspiel           |
+| Organs                  | 17 - 24             | Drawbar Organ - Rock Organ       |
+| Guitars                 | 25 - 32             | Acoustic Guitar (nylon) - Jazz Guitar |
+| Basses                  | 33 - 40             | Acoustic Bass - Synth Bass 2     |
+| Strings                 | 41 - 48             | Violin - String Ensemble 2       |
+| Ensemble                | 49 - 56             | Synth Strings 1 - Choir Aahs     |
+| Brass                   | 57 - 64             | Trumpet - Synth Brass 2          |
+| Reed                    | 65 - 72             | Soprano Sax - Bassoon            |
+| Pipe                    | 73 - 80             | Piccolo - Ocarina               |
+| Synth Lead              | 81 - 88             | Square Lead - Clav Lead          |
+| Synth Pad               | 89 - 96             | New Age Pad - Halo Pad           |
+| Synth Effects           | 97 - 104            | Rain Effect - Sci-Fi Effect      |
+| Ethnic                  | 105 - 112           | Sitar - Shanai                  |
+| Percussive              | 113 - 120           | Tinkle Bell - Agogo             |
+| Sound Effects           | 121 - 128           | Telephone Ring - Gunshot        |
+
+
+
 
 
 
