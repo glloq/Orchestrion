@@ -32,11 +32,12 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 
 ## Code generique
 
-- code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement on, retour off) 1 a 88 notes :[servo midi](https://github.com/glloq/servo-midi-music)
+- code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement avec noteOn, retour avec noteOff) 1 a 88 notes accordage diatonique ou chromatique :[servo midi](https://github.com/glloq/servo-midi-music)
 
-- instrument à corde gratté => [base](https://github.com/glloq/OneStringGuitar)
-  - [solenoides](https://github.com/glloq/Orchestrion_Plucked_Strings_Solenoids/tree/main)
-  - [servomoteurs](https://github.com/glloq/Orchestrion_Plucked_Strings_Servomotors/tree/main)
+
+- instrument à corde gratté de une a X corde avec X frettes => [general](https://github.com/glloq/OneStringGuitar)
+  - [Actionné par solenoides](https://github.com/glloq/Orchestrion_Plucked_Strings_Solenoids/tree/main)
+  - [Actionné par servomoteurs](https://github.com/glloq/Orchestrion_Plucked_Strings_Servomotors/tree/main)
   - Moteur pas à pas
     - Contact Continu
     - avec servomoteurs
