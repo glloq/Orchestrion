@@ -34,8 +34,15 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
 
 - code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement on, retour off) 1 a 88 notes :[servo midi](https://github.com/glloq/servo-midi-music)
 
-- tests et experimentations sur un intrument a une corde de type corde frottée => [lien](https://https://github.com/glloq/OneStringCello)
-- test et experimentations sur un interument a une corde gratté => [lien](https://github.com/glloq/OneStringGuitar)
+- instrument à corde gratté
+  - [solenoides](https://github.com/glloq/Orchestrion_Plucked_Strings_Solenoids/tree/main)
+  - [servomoteurs](https://github.com/glloq/Orchestrion_Plucked_Strings_Servomotors/tree/main)
+  - Moteur pas à pas
+    - Contact Continu
+    - avec servomoteurs
+    - avec solenoides
+
+
 
 -------------------------------------------------------
 
