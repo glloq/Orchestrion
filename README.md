@@ -14,27 +14,35 @@ L'orchestre électronique sera construit à partir de matériaux tels que du boi
 
 Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinateur ou d'un Raspberry Pi via une page web. L'utilisateur pourra sélectionner un fichier MIDI et assigner les différents canaux à chaque instrument. Pour la communication MIDI via USB, nous utiliserons la bibliothèque MidiUSB.h.
 
-# Code instruments actuel
 
-- Xylophone, glokenspiel, marimba, vibraphone = [Code adaptable de 17 a 32 notes avec gestion pwm + silencieux pour noteOff + volume/vibrato](https://github.com/glloq/Orchestrion-Xylophone)
-- [lyre 16 cordes](https://github.com/glloq/16-cords-lyre-midi)
-- [ukulele solenoides](https://github.com/glloq/Orchestrion_ukulele)
-- [ukulele moteurs PAP](https://github.com/glloq/ukulele_stepper_motor)
-- [piano](https://github.com/glloq/Orchestrion_Piano)
-- [percussion](https://github.com/glloq/MidiPercussion)
-- [Trompette](https://github.com/glloq/Orchestrion_trumpet) 
-- [flute a bec](https://github.com/glloq/servo-flute)
-- [Harmonica](https://github.com/glloq/harmonica_Midi)
-- [violon](https://github.com/glloq/violano-virtuoso)
-- basse => je doit adapter le code du ukulele solenoides
-- guitare => je doit adapter le code du ukulele solenoides
-- banjo => a faire 
+# Code instruments
 
 ## Code generique
+Vu que je cherche a utiliser le meme type de materiel, il n'y aura que quelques codes generique a faire pour chaque type type d'actionneurs.
+les codes suivants seront construit avec des objets en c++, ils dervais etre adaptable a beaucoup d'instruments ! (ca sera très probablement que pour moi XD) 
 
-- code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement avec noteOn, retour avec noteOff) 1 a 88 notes accordage diatonique ou chromatique :[servo midi](https://github.com/glloq/servo-midi-music)
+### simple action 
 
-### instrument a corde
+[Servo MIDI ](https://github.com/glloq/servo-midi-music)
+- 1 a 88 servomoteurs avec des pca9685
+- code adaptable grattage (+/- un angle alterné)ou action avec servomoteurs (deplacement avec noteOn, retour avec noteOff)
+- Accordage diatonique ou chromatique 
+
+Solenoid MIDI Simple => a venir
+- Code adaptable pour l'activation de 1 a 88 solenoides avec des mcp23017
+- avec decoupage pwm sur l'alimentation generale des solenoides (pour limiter la chauffe du ou des solenoides actifs)
+- accordage chromatique 
+
+Solenoid MIDI Velocity => c'est le code pour le piano !!
+- Code adaptable pour l'activation de 1 a 88 solenoides
+- avec decoupage pwm de chacun des solenoides pour adapter la puissance de frappe en fonction de l'intensité de la note midi recue.
+- accordage chromatique 
+
+Stepper Motor MIDI => a venir
+- Code pour controler un moteur pas a pas et gerer le deplacement a certaines position definie en fonction de la note midi recue.
+
+
+### instrument a corde gratté
 - instrument à corde gratté de une a 6 cordes avec X frettes par corde => [general](https://github.com/glloq/OneStringGuitar)
   - [Actionné par solenoides](https://github.com/glloq/Orchestrion_Plucked_Strings_Solenoids/tree/main)
   - [Actionné par servomoteurs](https://github.com/glloq/Orchestrion_Plucked_Strings_Servomotors/tree/main)
@@ -42,21 +50,26 @@ Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinate
     - Contact Continu
     - avec servomoteurs
     - avec solenoides
-
+      
+### instrument à corde frottée
 - instrument à corde frottée de une a 6 cordes avec X frettes par corde  =>[general](https://github.com/glloq/OneStringCello)
 
 ### instrument a vent
-- instrument a vent "basse pression"
-  - solenoides
-  - servomoteurs
-  - moteur pas à pas
+- instrument a vent "basse pression" (avec un ventilateur radial ou autre pompe a air adapté) 
+
     
-- instrument a vent "haute pression"
-  - solenoides
-  - servomoteurs
+- instrument a vent "haute pression" => c'est la partie la plus compliqué pour moi (utiliser des compresseurs de frigo ?) 
+
   
- 
-     
+## Exemples fini (presque) 
+- Xylophone, glokenspiel, marimba, vibraphone = [Code adaptable de 17 a 32 notes avec gestion pwm + silencieux pour noteOff + volume/vibrato](https://github.com/glloq/Orchestrion-Xylophone)
+- [lyre 16 cordes](https://github.com/glloq/16-cords-lyre-midi)
+- [ukulele solenoides](https://github.com/glloq/Orchestrion_ukulele)
+- [piano](https://github.com/glloq/Orchestrion_Piano)
+- [percussion](https://github.com/glloq/MidiPercussion)
+- [Trompette](https://github.com/glloq/Orchestrion_trumpet) 
+- [flute a bec](https://github.com/glloq/servo-flute)
+- [Harmonica](https://github.com/glloq/harmonica_Midi)
 
 -------------------------------------------------------
 
@@ -79,7 +92,7 @@ il faut permettre plusieurs actions sur l'interface de controle :
     
 - gestion de la lecture du fichier midi 
   - afficher les instruments utilisé dans le fichier midi
-  - fait l'assiciation automatique des intruments utilisé dans le fichier midi et les instruments connecté
+  - fait l'association automatique des intruments utilisé dans le fichier midi et les instruments connecté
   - permettre de selectionner un autre type d'instrument connecté comme sortie pour le chanel du fichier midi (et enregistrer le choix pour ce fichier ?)
   - envoi les messages midi a chaque instrument selectionné avec les delais adapté de chaque instrument
 
