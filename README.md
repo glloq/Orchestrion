@@ -24,8 +24,8 @@ les codes suivants seront construit avec des objets en c++, ils dervais etre ada
 ### simple action 
 
 [Servo MIDI ](https://github.com/glloq/servo-midi-music)
-- 1 a 88 servomoteurs avec des pca9685
-- code adaptable grattage (+/- un angle alterné)ou action avec servomoteurs (deplacement avec noteOn, retour avec noteOff)
+- 1 a 128 servomoteurs avec des pca9685
+- code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement avec noteOn, retour avec noteOff) ou impulsion (deplecement avec noteOn, retour après un certain temps) 
 - Accordage diatonique ou chromatique 
 
 Solenoid MIDI Simple => a venir
