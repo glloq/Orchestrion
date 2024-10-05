@@ -23,20 +23,21 @@ les codes suivants seront construit avec des objets en c++, ils dervais etre ada
 
 ### simple action 
 
-[Servo MIDI ](https://github.com/glloq/servo-midi-music)
+[Servo MIDI Music](https://github.com/glloq/servo-midi-music)
 - 1 a 128 servomoteurs avec des pca9685
-- code adaptable grattage (+/- un angle alterné) ou action avec servomoteurs (deplacement avec noteOn, retour avec noteOff) ou impulsion (deplecement avec noteOn, retour après un certain temps) 
+- 3 type de code/fonctionnement :
+  - code adaptable grattage (+/- un angle alterné)
+  - action avec servomoteurs (deplacement avec noteOn, retour avec noteOff)
+  - impulsion (deplacement avec noteOn, retour après un certain temps) 
 - Accordage diatonique ou chromatique 
 
-Solenoid MIDI Simple => a venir
-- Code adaptable pour l'activation de 1 a 88 solenoides avec des mcp23017
-- avec decoupage pwm sur l'alimentation generale des solenoides (pour limiter la chauffe du ou des solenoides actifs)
-- accordage chromatique 
-
-Solenoid MIDI Velocity => c'est le code pour le piano !!
-- Code adaptable pour l'activation de 1 a 88 solenoides
-- avec decoupage pwm de chacun des solenoides pour adapter la puissance de frappe en fonction de l'intensité de la note midi recue.
-- accordage chromatique 
+[Solenoid MIDI Music ](https://github.com/glloq/Solenoid-Midi-Music)
+- Code adaptable pour l'activation de 1 a 128 solenoides 
+- 3 type de code/fonctionnement :
+  - action avec solenoides sans velocité ( activé avec noteOn, desactivé avec noteOff )
+  - action avec solenoides avec velocité par PWM ( activé avec noteOn, desactivé avec noteOff )
+  - Impulsion/Percussion ( activé avec noteOn, desactivé après un certain temps )
+- accordage diatonique ou chromatique 
 
 Stepper Motor MIDI => a venir
 - Code pour controler un moteur pas a pas et gerer le deplacement a certaines position definie en fonction de la note midi recue.
