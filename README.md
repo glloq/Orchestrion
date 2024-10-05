@@ -61,13 +61,16 @@ Stepper Motor MIDI => a venir
     
 - instrument a vent "haute pression" => c'est la partie la plus compliqué pour moi (utiliser des compresseurs de frigo ?) 
 
-  
-## Exemples fini (presque) 
+### Batteries/Percussions
+l'objectif est de permettre de jouer les note midi pour un systeme classique de batteries en respectant le General MIDI PERCUSSION Key Mapping :
+[percussion](https://github.com/glloq/MidiPercussion)
+
+  -------------------------------------------------------
+## Exemples d'intruments
 - Xylophone, glokenspiel, marimba, vibraphone = [Code adaptable de 17 a 32 notes avec gestion pwm + silencieux pour noteOff + volume/vibrato](https://github.com/glloq/Orchestrion-Xylophone)
 - [lyre 16 cordes](https://github.com/glloq/16-cords-lyre-midi)
 - [ukulele solenoides](https://github.com/glloq/Orchestrion_ukulele)
 - [piano](https://github.com/glloq/Orchestrion_Piano)
-- [percussion](https://github.com/glloq/MidiPercussion)
 - [Trompette](https://github.com/glloq/Orchestrion_trumpet) 
 - [flute a bec](https://github.com/glloq/servo-flute)
 - [Harmonica](https://github.com/glloq/harmonica_Midi)
