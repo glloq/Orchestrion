@@ -28,4 +28,19 @@ il faut permettre plusieurs actions sur l'interface de controle :
   - recuperer le delais pour activation
   - les informations sur les notes jouables (premiere note midi, nombre de note jouable, type de gamme utilisé, nombre de corde etc..)
 
+## Interface en JS
+
+Nous garder un esprit de portabilité, je vais essayer d'utiliser le javascript pour la partie gestion des fichiers midi et interface.
+
+Il y a deux Choix possible pour la partie midi :
+JZZ.js ou WebMIDI.js => apparement Jzz.js est plus performant et complet ?
+
+## les differntes pages de l'interface 
+
+La partie pour selectionner un fichier midi a jouer
+la partie pour afficher le fichier midi en cours de lecture 
+La partie pour l'affichage et le routage des differents canaux du fichier midi vers les instruments
+La partie pour avoir un clavier virtuel (qui controle un intrument selectionné) 
+
+
 
