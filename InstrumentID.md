@@ -1,22 +1,17 @@
 # identification de l'instrument
 
-On va chercher a utiliser un message SysEx de Requête d'Identification pour informer le controleur du type d'instrument connecté et ses carracteristiques.
-- le type d'appareil
+On va chercher a utiliser un message SysEx de Requête d'Identification pour informer le controleur du type d'instrument connecté et ses carracteristiques.  
+
+Il y a beaucoup de données qui peuvnet etre recupérées :
+- le type d'instrument
 - le delais pour action
 - la premiere note midi jouable 
 - le nombre de note jouable
 - le type d'octave (chromatique ou diatonique)
+- le nombre de noteOn max jouable en meme temps 
   
 
-L'appareil répond avec un message SysEx qui contient des informations telles que :
-- Manufacturer ID : Identifiant du fabricant de l'appareil.
-- Device ID : Identifiant unique pour cet appareil particulier.
-- Version du Firmware : Informations sur la version du firmware.
-- Nom ou Modèle de l'Appareil : Optionnellement, le nom ou le modèle de l'appareil peut être inclus.
-  
-nous ajouterons pour notre besoin une information sur le delais d'action de l'instrument
-
-## Exemple reponse de SysEx
+## Reponse de ID Request SysEx type
 ``` 
 F0 7E <Device ID> 06 02 <Manufacturer ID> <Family Code> <Family Number> <Software Revision> F7
 ```
@@ -31,10 +26,9 @@ F0 7E <Device ID> 06 02 <Manufacturer ID> <Family Code> <Family Number> <Softwar
 - <Software Revision> : Version du firmware ou du logiciel (quatre octets).
 - F7 : Fin du message SysEx.
 
+On va garder la meme strucure pour permettre de fonctionner avec des instruments du marché et dans le cas ou un instrument pour l'orchestrion est détécté, on viendra lire les données qui serront mmise en forme d'une autre facon pour la transmission des parametre de l'instrument.
+
 on utilisera l'octets de <Device ID> avec les codes general midi 1 pour les Program Change Instrument Mapping pour identifier l'instrument
-on utilisera les 2 octets de <Family Number> pour informer sur le temps de delais moyen pour jouer une note
-on utilisera les 4 octets de <Software Revision> separément pour informer le controleur sur : la premiere note midi, le nombre de notes jouable, le type de gamme utilisé.
-on a encore les 2 octets de <Family Code> pour identifier que c'est instrument qui fonctionne avec l'interface et que la partie host peut interpreter les infos pour l'interface de l'orchestrion=> aleatoirement mis a 69 par exemples 
 
 ## Association instrument / Device ID 
 
