@@ -37,10 +37,10 @@ JZZ.js ou WebMIDI.js => apparement Jzz.js est plus performant et complet ?
 
 ## les differntes pages de l'interface 
 
-La partie pour selectionner un fichier midi a jouer
-la partie pour afficher le fichier midi en cours de lecture 
-La partie pour l'affichage et le routage des differents canaux du fichier midi vers les instruments
-La partie pour avoir un clavier virtuel (qui controle un intrument selectionné) 
+- La partie pour selectionner un fichier midi a jouer
+- la partie pour afficher le fichier midi en cours de lecture
+- La partie pour l'affichage et le routage des differents canaux du fichier midi vers les instruments
+- La partie pour avoir un clavier virtuel (qui controle un intrument selectionné)  avec molette pour velocité
 
 
 
