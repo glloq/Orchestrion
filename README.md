@@ -1,16 +1,17 @@
-# Orchestrion - Projet de création d'un orchestre électronique
+#  Projet de création d'un orchestre automatique
 
-Le projet Orchestrion est une initiative ambitieuse visant à créer un orchestre électronique complet composé d'instruments acoustiques. L'objectif de ce projet est de jouer des musiques à partir de fichiers MIDI.
+Le projet Orchestrion est une initiative ambitieuse visant à créer un orchestre composé d'instruments acoustiques actionné par des "robots".  
 
-Ce dépôt GitHub regroupe les explications générales du projet
+L'objectif final de ce projet est de permetre de jouer facilement des musiques depuis un fichier midi via des instruments qui viendrons executer les messages qu'ils recoivent.
 
-Chaque type d'instrument aura un lien vers son propre dépôt pour l'instrument contenant les plans, fichiers et tutoriels spécifiques à chaque instrument.
+Ce dépôt GitHub regroupera les explications générales du projet ainsi que les choix techniques.
+
 
 ## Contrôle de l'orchestre électronique
 
-Tous les instruments seront contrôlés électroniquement à l'aide de microcontrôleurs Arduino, de moteurs, d'électroaimants et de servomoteurs.
+Tous les instruments seront contrôlés électroniquement à l'aide de microcontrôleurs Arduino (ou autre microcontroleur adapté), de moteurs dc/ pas a pas, d'électroaimants et de servomoteurs.
 
-L'orchestre électronique sera construit à partir de matériaux tels que du bois, du métal ou l'impression 3D. Chaque instrument sera équipé d'électronique pour contrôler les mouvements des cordes, des membranes et des clapets nécessaires pour produire les sons.
+
 
 Le contrôle de l'orchestre électronique sera effectué à partir d'un ordinateur ou d'un Raspberry Pi via une page web. L'utilisateur pourra sélectionner un fichier MIDI et assigner les différents canaux à chaque instrument. Pour la communication MIDI via USB, nous utiliserons la bibliothèque MidiUSB.h.
 
