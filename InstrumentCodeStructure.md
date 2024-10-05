@@ -34,16 +34,37 @@ On pourra ajouter quelques cas particulier pour les instrument a cordes :
 - CC74 (Brightness) : Modifie la brillance ou l'attaque du son, utile pour ajuster la texture des frottements d'un archet.
 
 
-### les SysEx
+### l'identifiaction automatique de l'instrument
+
 Nous utiliserons les messages sysEx pour permettre un indentification automatique du type d'intrument sur l'interface de controle.
-
 => c'est à definir proprement!! 
+Idelalement, il faut permettre de recuperer un max d'infos sur l'instrument 
 
+### activation et desactivation des instruments 
 
-# code MidiHandler.h
+certains instruments ont besoin d'etre initialisé au demarrage puis a l'utilisation ( monté en pression de pompes etc ) il faut donc prevenir l'instrument qu'il est en cours d'utilisation.  
 
+Les messages System Exclusive (SysEx) seront encore une fois utilisé pour controller l'eveil et la mise en veille d'un instrument en preparation a la reception de messages midi.
+Il faut bien evidement alumer l'appareil si il recois des notes midi sans avoir été "alumé" avant via un message SysEx
 
+# code MidiHandler.h pour le projet 
 
+Voici une liste des fonction qui peuvent etre utilisé dans l'objet instrument pour avoir une base normalisé dans le projet Orchestrion 
 
+- NoteOn ( Numero midi, velocité )
+- NoteOff ( Numero midi )
+- pitchBend 
+- Channel Pressure ou Aftertouch
+- Polyphonic Key Pressure
 
+Controls changes :
+
+- Modulation Wheel
+- Breath Controller
+- Volume
+- Expression
+- Portamento Time
+- Brightness
+- Sustain Pedal
+- initialisation 
 
