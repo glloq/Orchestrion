@@ -16,15 +16,16 @@ les instrument viendrons executer les messages recu peu importe le canal => la g
   
 ## messages midi utilisé 
 
-### NoteOn et noteOff
-C'est le minimum pour faire fonctionner l'instrument, il faut aussi utiliser la velocité quand c'est possible !
+### Les messsages midi Classiques
+
+NoteOn et noteOff : C'est le minimum pour faire fonctionner l'instrument, il faut aussi utiliser la velocité quand c'est possible !
 
 
 ### les Controls Changes
 
 Ces CC sont polyvalents et permettent de gérer les aspects essentiels de la dynamique et des effets sonores, quelle que soit la catégorie de l'instrument :
 - CC1 (Modulation Wheel) : Contrôle de la modulation, du vibrato ou d'autres effets dynamiques pour tous les instruments.
-- CC2 (Breath Controller) : Utile pour les instruments à vent ou pour simuler des effets de souffle sur des synthés ou autres instruments.
+- CC2 (Breath Controller) : Utile pour les instruments à vent ou pour simuler des effets de souffle
 - CC7 (Volume) : Contrôle général du volume, utile pour tous les types d'instruments.
 - CC11 (Expression) : Ajuste l'intensité du son, permettant des variations fines et expressives pour presque tous les instruments.
 
@@ -33,14 +34,14 @@ On pourra ajouter quelques cas particulier pour les instrument a cordes :
 - CC5 (Portamento Time) : Pour ajuster les transitions entre les notes (glissando)
 - CC74 (Brightness) : Modifie la brillance ou l'attaque du son, utile pour ajuster la texture des frottements d'un archet.
 
-
-### l'identifiaction automatique de l'instrument
+### SysEx
+#### l'identifiaction automatique de l'instrument
 
 Nous utiliserons les messages sysEx pour permettre un indentification automatique du type d'intrument sur l'interface de controle.
 => c'est à definir proprement!! 
 Idelalement, il faut permettre de recuperer un max d'infos sur l'instrument 
 
-### activation et desactivation des instruments 
+#### activation et desactivation des instruments 
 
 certains instruments ont besoin d'etre initialisé au demarrage puis a l'utilisation ( monté en pression de pompes etc ) il faut donc prevenir l'instrument qu'il est en cours d'utilisation.  
 
@@ -66,5 +67,10 @@ Controls changes :
 - Portamento Time
 - Brightness
 - Sustain Pedal
-- initialisation 
+- initialise
+
+SysEx :
+- reveil
+- mise en veille
+- ID request
 
