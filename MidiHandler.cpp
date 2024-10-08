@@ -112,7 +112,7 @@ void MidiHandler::processControlChange(byte controller, byte value) {
 void MidiHandler::processSysExMessage() {
   //  Traitement d'une ID Request
   if (sysexBuffer[1] == 0x7E && sysexBuffer[3] == 0x06 && sysexBuffer[4] == 0x01) {
-    //Serial.println("ID Request Received, sending Identity Reply...");
+    if (DEBUG) {Serial.println("ID Request Received, sending Identity Reply...");}
     sendIdentityReply();
   }
 
@@ -121,16 +121,21 @@ void MidiHandler::processSysExMessage() {
 }
 
 void MidiHandler::sendIdentityReply() {
-	//code a adapter en fonction des caracteristiques de l'instrument et du formatage du projet 
+//code a adapter en fonction des caracteristiques de l'instrument => a voir dans InstrumentID.md 
+	
     byte identityReply[] = {
     0xF0,        // Start SysEx
     0x7E,        // Non-real time
-    0x00,        // Device ID 
+    0x00,        // Device ID => code de l'instrument utilisé
     0x06,        // Sub-ID1 (General Information)
     0x02,        // Sub-ID2 (Identity Reply)
     0x7D,        // Manufacturer ID (7D is for educational or experimental use)
-    0x01, 0x02, 0x03,  // Device Family and Member Code (example)
-    0x00, 0x01, 0x02,  // Software Revision (example)
+    0x7D,	 // previent que c'est un instrument compatible avec l'interface Orchestrion (j'ai mis ca a 7D mais il faut voir si ca ne pose pas de problemes) 
+    0x02,	 // premiere note de l'instrument
+    0x02,	 // Nombre de note jouable de l'instrument
+    0x00,  	 // Type de gamme de l'intrument => 0 chromatique, 1 diatonique 
+    0x00,	 //nombre de note jouable en meme temps (de 1 a 128) 
+    0x01, 0x02,  // delais d'action de l'instrument (temps pour jouer une note) 
     0xF7         // End SysEx
   };
 
