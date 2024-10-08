@@ -1,5 +1,4 @@
-//base du code midiHandler
-// il fautenccor eajouter la gestion des sysex !
+//base du code midiHandler.cpp pour les instrument de l'Orchestrion
 
 MidiHandler::MidiHandler(Instrument &instrument) : _instrument(instrument) {
   if (DEBUG) {
@@ -18,6 +17,26 @@ void MidiHandler::readMidi() {
 }
 
 void MidiHandler::processMidiEvent(midiEventPacket_t midiEvent) {
+
+  // Si c'est un message SysEx (commence par 0xF0)
+  if (midiEvent.byte1 == 0xF0) { // Début de SysEx
+    isReceivingSysEx = true;
+    sysexIndex = 0;
+    sysexBuffer[sysexIndex++] = midiEvent.byte1;
+  } else if (isReceivingSysEx) {
+    // Continuer à recevoir les données SysEx
+    sysexBuffer[sysexIndex++] = midiEvent.byte1;
+    sysexBuffer[sysexIndex++] = midiEvent.byte2;
+    sysexBuffer[sysexIndex++] = midiEvent.byte3;
+
+    // Si la fin de SysEx est atteinte ( fini par un byte 0xF7), traiter le message complet
+    if ( midiEvent.byte1 == 0xF7 || midiEvent.byte2 == 0xF7 || midiEvent.byte3 == 0xF7) || sysexIndex >= SYSEX_BUFFER_SIZE) {
+        processSysExMessage();
+	isReceivingSysEx=false
+    }
+  }else{
+// on vient traiter tout les autres types de messages midi 
+	  
   byte messageType = midiEvent.byte1 & 0xF0;
   byte channel = midiEvent.byte1 & 0x0F;
   byte note = midiEvent.byte2;
@@ -51,6 +70,7 @@ void MidiHandler::processMidiEvent(midiEventPacket_t midiEvent) {
       processControlChange(note, velocity);
     
   }
+ }
 }
 /*------------------------------------------------------------------
 --------------        process Control Change             ----------
@@ -87,4 +107,37 @@ void MidiHandler::processControlChange(byte controller, byte value) {
       //_instrument.mute();
       break;
   }
+}
+
+void MidiHandler::processSysExMessage() {
+  //  Traitement d'une ID Request
+  if (sysexBuffer[1] == 0x7E && sysexBuffer[3] == 0x06 && sysexBuffer[4] == 0x01) {
+    //Serial.println("ID Request Received, sending Identity Reply...");
+    sendIdentityReply();
+  }
+
+  // Réinitialiser le buffer et l'index après le traitement
+  sysexIndex = 0;
+}
+
+void MidiHandler::sendIdentityReply() {
+	//code a adapter en fonction des caracteristiques de l'instrument et du formatage du projet 
+    byte identityReply[] = {
+    0xF0,        // Start SysEx
+    0x7E,        // Non-real time
+    0x00,        // Device ID 
+    0x06,        // Sub-ID1 (General Information)
+    0x02,        // Sub-ID2 (Identity Reply)
+    0x7D,        // Manufacturer ID (7D is for educational or experimental use)
+    0x01, 0x02, 0x03,  // Device Family and Member Code (example)
+    0x00, 0x01, 0x02,  // Software Revision (example)
+    0xF7         // End SysEx
+  };
+
+  // Envoi du message SysEx via MIDIUSB
+  for (int i = 0; i < sizeof(identityReply); i += 3) {
+    midiEventPacket_t midiEvent = {0x04, identityReply[i], identityReply[i + 1], identityReply[i + 2]};
+    MidiUSB.sendMIDI(midiEvent);
+  }
+  MidiUSB.flush();  // Envoyer tout le message
 }
