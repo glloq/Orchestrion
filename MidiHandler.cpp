@@ -30,9 +30,8 @@ void MidiHandler::processMidiEvent(midiEventPacket_t midiEvent) {
     sysexBuffer[sysexIndex++] = midiEvent.byte3;
 
     // Si la fin de SysEx est atteinte ( fini par un byte 0xF7), traiter le message complet
-    if ( midiEvent.byte1 == 0xF7 || midiEvent.byte2 == 0xF7 || midiEvent.byte3 == 0xF7) || sysexIndex >= SYSEX_BUFFER_SIZE) {
-        processSysExMessage();
-	isReceivingSysEx=false
+if ((midiEvent.byte1 == 0xF7) || (midiEvent.byte2 == 0xF7) || (midiEvent.byte3 == 0xF7) || (sysexIndex >= SYSEX_BUFFER_SIZE)) {        processSysExMessage();
+	isReceivingSysEx=false;
     }
   }else{
 // on vient traiter tout les autres types de messages midi 
@@ -139,7 +138,7 @@ void MidiHandler::sendIdentityReply() {
     0xF7         // End SysEx
   };
 
-  // Envoi du message SysEx via MIDIUSB
+  // Envoi du message SysEx via MIDIUSB   => pas encore testé, l'envoi de 0x04 avant les 3 bytes a chaque fois risque de poser pb
   for (int i = 0; i < sizeof(identityReply); i += 3) {
     midiEventPacket_t midiEvent = {0x04, identityReply[i], identityReply[i + 1], identityReply[i + 2]};
     MidiUSB.sendMIDI(midiEvent);
