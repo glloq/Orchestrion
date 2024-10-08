@@ -131,11 +131,11 @@ void MidiHandler::sendIdentityReply() {
     0x02,        // Sub-ID2 (Identity Reply)
     0x7D,        // Manufacturer ID (7D is for educational or experimental use)
     0x7D,	 // previent que c'est un instrument compatible avec l'interface Orchestrion (j'ai mis ca a 7D mais il faut voir si ca ne pose pas de problemes) 
-    0x02,	 // premiere note de l'instrument
-    0x02,	 // Nombre de note jouable de l'instrument
-    0x00,  	 // Type de gamme de l'intrument => 0 chromatique, 1 diatonique 
-    0x00,	 //nombre de note jouable en meme temps (de 1 a 128) 
-    0x01, 0x02,  // delais d'action de l'instrument (temps pour jouer une note) 
+    55,	 	 // premiere note midi de l'instrument
+    16,	 	 // Nombre de note jouable de l'instrument 
+    0,  	 // Type de gamme de l'intrument => 0 chromatique, 1 diatonique 
+    1,		 //nombre de note jouable en meme temps (de 1 a 128) 
+    2, 120,  // delais d'action de l'instrument (temps pour jouer une note) => dans ce cas 2 x 120 ms
     0xF7         // End SysEx
   };
 
